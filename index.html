@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Gestor de Reservas - Peluquería</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3">
+      <h1 class="text-2xl font-bold text-blue-600">Mi Peluquería</h1>
+      <button id="logout-btn" class="text-gray-700 hover:text-blue-600">
+        Cerrar sesión
+      </button>
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#reserva" class="nav-link">Reserva</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+    </div>
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden flex-col items-center bg-white shadow-lg py-4 space-y-4 text-center"
+    >
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#reserva" class="nav-link">Reserva</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero-section">
+    <div class="hero-content text-center">
+      <h2 class="hero-title">Reserva tu cita online</h2>
+      <p class="hero-subtitle">Fácil, rápido y desde cualquier dispositivo</p>
+      <a href="#reserva" id="start-btn" class="btn btn-primary">Empezar</a>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="section">
+    <h3 class="section-title text-center">Nuestros Servicios</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="card">
+        <h4 class="card-title">✂️ Corte de pelo</h4>
+        <p>Cortes modernos y clásicos para todos.</p>
+      </div>
+      <div class="card">
+        <h4 class="card-title">💅 Manicura</h4>
+        <p>Manicura profesional para tus manos.</p>
+      </div>
+      <div class="card">
+        <h4 class="card-title">💆‍♀️ Masajes</h4>
+        <p>Relájate con nuestros masajes exclusivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserva -->
+  <section
+    id="reserva"
+    class="section bg-white rounded-xl shadow-lg max-w-4xl mx-auto"
+  >
+    <h3 class="section-title text-center">Haz tu reserva</h3>
+
+    <!-- Calendario -->
+    <div id="calendar" class="calendar-container mx-auto mb-8"></div>
+
+    <!-- Modal de reserva -->
+    <div id="modal-reserva" class="modal-overlay">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close">&times;</button>
+        <h4 class="text-2xl font-semibold mb-2">Confirmar cita</h4>
+        <p id="modal-info" class="text-gray-600 mb-4"></p>
+        <form id="reserva-form" class="space-y-4">
+          <input type="text" name="name" placeholder="Tu nombre" class="input" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Tu email"
+            class="input"
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Tu teléfono"
+            class="input"
+          />
+          <input type="hidden" name="datetime" />
+          <select name="service" class="input">
+            <option value="">Selecciona un servicio</option>
+            <option value="Corte de pelo">Corte de pelo</option>
+            <option value="Manicura">Manicura</option>
+            <option value="Masajes">Masajes</option>
+          </select>
+          <div class="flex justify-end gap-3">
+            <button
+              type="button"
+              id="modal-cancel"
+              class="btn-cancel"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn-primary">Reservar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  
+  <!-- 2. Firebase Config (exporta auth y db) -->
+  <script type="module" src="./firebase-config.js"></script>
+  <!-- 3. Lógica de autenticación y app -->
+  <script type="module" src="./app.js"></script>
+  
+  <!-- 4. Calendario -->
+  <script type="module" src="./calendar.js"></script>
+  <!-- 5. Scroll suave -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('start-btn');
+      startBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document
+          .getElementById('reserva')
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script type="module" src="./admin.js"></script>
+
+</body>
+</html>

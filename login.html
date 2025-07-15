@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Login - Peluquería</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+  
+    
+  <div class="auth-wrapper">
+  <div class="auth-card">
+    <!-- LOGIN -->
+    <section class="panel login-panel">
+      <h2>Iniciar sesión</h2>
+      <form id="login-form">
+        <div class="field">
+          <label>Email</label>
+          <input name="email" type="email" autocomplete="username" placeholder="tucorreo@ejemplo.com" required />
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input
+  name="password"
+  type="password"
+  autocomplete="current-password"
+  placeholder="••••••••"
+  required
+/>
+
+        </div>
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+      <p class="text-sm">¿No tienes cuenta? 
+        <span id="toggle-signup" class="link">Regístrate</span>
+      </p>
+    </section>
+
+    <!-- SIGNUP -->
+    <!-- SIGNUP -->
+<section class="panel signup-panel hidden" id="signup-container">
+  <h2>Crear cuenta</h2>
+  <form id="signup-form">
+    <div class="field">
+      <label>Email</label>
+
+      <input name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+    </div>
+    <div class="field">
+      <label>Contraseña</label>
+      <input name="password" type="password" placeholder="••••••••" required />
+    </div>
+    <div class="field">
+  <label>Nombre del negocio</label>
+  <input name="businessName" type="text" placeholder="Ej. Peluquería Génesis" required />
+</div>
+
+    <button type="submit" class="btn btn-outline">Crear cuenta</button>
+  </form>
+</section>
+
+  </div>
+</div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth.js"></script>
+  
+</body>
+</html>

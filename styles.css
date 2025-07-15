@@ -1,0 +1,626 @@
+:root {
+  /* Colores */
+  --primary:        #2563eb;
+  --primary-light:  #4299e1;
+  --secondary:      #ef4444;
+  --bg-light:       #f7fafc;
+  --card-bg:        #ffffff;
+  --overlay:        rgba(0,0,0,0.5);
+  /* Tipografía */
+  --font-base:      'Inter', sans-serif;
+}
+
+/* Reset y body */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  background: var(--bg-light);
+  color: #374151;
+}
+
+/* Navbar */
+header {
+  background: #fff;
+  transition: background-color .3s, box-shadow .3s;
+}
+header:hover {
+  background: var(--light-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.nav-link {
+  position: relative;
+  transition: color .3s;
+  color: #374151;
+}
+.nav-link:hover {
+  color: var(--color-primary);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px; left: 0;
+  background: var(--color-primary);
+  transition: width .3s;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero */
+.hero-section {
+  height: 90vh;
+  background-image: url('https://source.unsplash.com/1600x900/?haircut,salon');
+  background-size: cover;
+  background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+}
+.hero-content {
+  background: rgba(255,255,255,0.8);
+  padding: 2rem; border-radius: 1rem;
+}
+.hero-title {
+  font-size: 3rem; font-weight: 700; margin: .5rem 0;
+  color: var(--color-primary-dark);
+}
+.hero-subtitle {
+  font-size: 1.25rem; margin-bottom: 1.5rem;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  padding: .75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .3s, transform .2s;
+  animation: pulse 2s infinite;
+}
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.05);
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+
+/* Sections */
+.section {
+  padding: 4rem 1rem;
+}
+.section-title {
+  font-size: 2rem; font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.15);
+}
+.card-title {
+  font-size: 1.25rem; font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+/* Form */
+.label {
+  display: block; font-weight: 600; margin-bottom: .5rem;
+}
+.input {
+  width: 100%;
+  padding: .75rem;
+  border: 1px solid #D1D5DB;
+  border-radius: .5rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .3s;
+}
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+}
+/* Tablas en dashboard */
+table th, table td {
+  border-bottom: 1px solid #E5E7EB;
+}
+
+/* Botones de acción */
+.btn-primary/60 {
+  display: inline-block;
+  background: rgba(37, 99, 235, 0.6);
+  color: #fff;
+  border-radius: 9999px;
+  transition: background .3s;
+}
+.btn-primary/60:hover {
+  background: rgba(37, 99, 235, 0.8);
+}
+/* Variables de color */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --bg-light: #f9fafb;
+  --text-dark: #374151;
+  --pending: #fbbf24;
+  --confirmed: #10b981;
+  --cancelled: #ef4444;
+}
+
+/* Botones de filtro */
+.pill {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  padding: .5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: background .3s, color .3s, border .3s;
+  cursor: pointer;
+}
+.pill.active,
+.pill:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Contenedor de cards */
+#appointments-list {
+  margin-top: 1rem;
+}
+
+/* Card de cita */
+.appointment-card {
+  background: red;
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Cabecera de card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.card-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.status-badge {
+  padding: .25rem .75rem;
+  border-radius: 9999px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+.status-pending   { background: var(--pending); }
+.status-confirmed { background: var(--confirmed); }
+.status-cancelled { background: var(--cancelled); }
+
+/* Cuerpo de card */
+.card-body p {
+  margin: .25rem 0;
+  color: var(--text-dark);
+  font-size: .95rem;
+}
+
+/* Botones de acción dentro de la card */
+.card-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: .5rem;
+}
+.action-btn {
+  flex: 1;
+  padding: .5rem 0;
+  border: none;
+  border-radius: .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.btn-confirm {
+  background: var(--confirmed);
+  color: #fff;
+}
+.btn-cancel {
+  background: var(--cancelled);
+  color: #fff;
+}
+.action-btn:hover {
+  transform: scale(1.03);
+  opacity: .9;
+}
+/* Card base */
+.appointment-card {
+  background: #fff;
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Badge de estado */
+.status-badge {
+  padding: .25rem .75rem;
+  border-radius: 9999px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+.status-pending   { background: #fbbf24; }
+.status-confirmed { background: #10b981; }
+.status-cancelled { background: #ef4444; }
+
+/* Botones de acción */
+.action-btn {
+  flex: 1;
+  padding: .5rem 0;
+  border: none;
+  border-radius: .5rem;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.btn-confirm { background: #10b981; color: #fff; }
+.btn-cancel  { background: #ef4444; color: #fff; }
+.action-btn:hover {
+  transform: scale(1.03);
+  opacity: .9;
+}
+/* Sección Reserva */
+#reserva {
+  padding: 3rem 1rem;
+}
+
+/* Contenedor del calendario */
+.calendar-container {
+  background: var(--card-bg);
+  border-radius: .75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+
+/* Inputs y select */
+.input {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: .75rem;
+  font-size: .95rem;
+  transition: border-color .3s, box-shadow .3s;
+}
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  outline: none;
+}
+
+/* Botones */
+.btn-primary, .btn-cancel {
+  padding: .75rem 1.5rem;
+  border: none;
+  border-radius: .75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s, filter .2s;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+.btn-cancel {
+  background: var(--secondary);
+  color: #fff;
+}
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Modal content */
+.modal-content {
+  background: var(--card-bg);
+  border-radius: .75rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  animation: popup .3s ease-out;
+}
+@keyframes popup {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* Botón cerrar */
+.modal-close {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color .2s;
+}
+.modal-close:hover {
+  color: #374151;
+}
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  background: var(--bg-light);
+
+  display: flex;
+  align-items: center;      /* centro vertical */
+  justify-content: center;  /* centro horizontal */
+  min-height: 100vh;        /* ocupa toda la pantalla */
+}
+.auth-container {
+  width: 100%;       /* o width: 90% si quieres márgenes laterales */
+  max-width: 800px;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  overflow: hidden;
+}
+/* 1. Centrar y fondo degradado */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Inter', sans-serif;
+}
+
+/* 2. Wrapper y tarjeta */
+.auth-wrapper {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+}
+.auth-card {
+  display: flex;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  background: #ffffff;
+}
+
+/* 3. Paneles iguales */
+.panel {
+  flex: 1;
+  padding: 2.5rem;
+  transition: background .3s ease;
+}
+
+/* 4. Distintivos de panel */
+.login-panel {
+  background: #f5f7ff;
+}
+.signup-panel {
+  background: #fafaff;
+  border-left: 1px solid #e5e7eb;
+}
+
+/* 5. Títulos */
+.panel h2 {
+  margin: 0 0 1.5rem;
+  color: #1f2937;
+  font-size: 1.75rem;
+}
+
+/* 6. Campos */
+.field {
+  margin-bottom: 1.25rem;
+}
+.field label {
+  display: block;
+  margin-bottom: .5rem;
+  color: #4b5563;
+  font-size: .9rem;
+}
+.field input {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: .75rem;
+  font-size: .95rem;
+  transition: border-color .3s, box-shadow .3s;
+}
+.field input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+  outline: none;
+}
+
+/* 7. Botones */
+.btn {
+  width: 100%;
+  padding: .75rem;
+  border: none;
+  border-radius: .75rem;
+  background: #667eea;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s, transform .2s;
+}
+.btn:hover {
+  background: #5563d6;
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid #667eea;
+  color: #667eea;
+}
+.btn-outline:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+/* 8. Texto e enlace */
+.text-sm {
+  font-size: .875rem;
+  color: #6b7280;
+  margin-top: 1rem;
+  text-align: center;
+}
+.link {
+  color: #667eea;
+  cursor: pointer;
+  transition: color .3s;
+}
+.link:hover {
+  color: #4f5bb5;
+}
+
+/* 9. Responsive: apila en pantallas pequeñas */
+@media (max-width: 640px) {
+  .auth-card {
+    flex-direction: column;
+  }
+  .signup-panel {
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}
+/* Contenedor general del calendario */
+.calendar-container {
+  background: var(--card-bg);
+  border-radius: .75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
+
+/* Toolbar y botones */
+.fc .fc-toolbar-title {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.fc .fc-button {
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  border-radius: .5rem;
+  padding: .4rem .8rem;
+  font-size: .9rem;
+  transition: background .2s;
+}
+.fc .fc-button:hover,
+.fc .fc-button:focus {
+  background: var(--primary-light);
+}
+.fc .fc-button-active {
+  background: var(--primary-dark);
+}
+
+/* Day headers */
+.fc .fc-col-header-cell-cushion {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Celdas del grid */
+.fc .fc-daygrid-day-frame {
+  background: transparent;
+}
+.fc .fc-timegrid-slot-label {
+  color: #6b7280;
+  font-size: .8rem;
+}
+
+/* Eventos reservados */
+.fc .fc-event {
+  border: none;
+  border-radius: .5rem;
+  padding: .2rem .4rem;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+/* Disponibilidad (fondo verde) */
+.fc .fc-bg-event {
+  background: rgba(72, 187, 120, 0.25) !important;
+}
+
+/* Evento “Reservado” */
+.fc-event.reserved {
+  background: var(--secondary) !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .fc .fc-toolbar-chunk {
+    flex-direction: column;
+    gap: .5rem;
+  }
+}
